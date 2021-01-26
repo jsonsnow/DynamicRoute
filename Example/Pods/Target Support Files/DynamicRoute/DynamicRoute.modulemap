@@ -1,0 +1,6 @@
+framework module DynamicRoute {
+  umbrella header "DynamicRoute-umbrella.h"
+
+  export *
+  module * { export * }
+}

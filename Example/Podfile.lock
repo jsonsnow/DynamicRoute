@@ -1,0 +1,53 @@
+PODS:
+  - Alamofire (4.9.1)
+  - DynamicRoute (0.1.0):
+    - Mediator
+    - WGNet
+    - WGRouter
+  - Mediator (0.1.6):
+    - Mediator/ModuleHelper (= 0.1.6)
+    - Mediator/ModuleService (= 0.1.6)
+    - WGRouter
+  - Mediator/ModuleHelper (0.1.6):
+    - WGRouter
+  - Mediator/ModuleService (0.1.6):
+    - WGRouter
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Result (4.1.0)
+  - WGNet (0.1.3):
+    - Moya
+  - WGRouter (0.1.0)
+
+DEPENDENCIES:
+  - DynamicRoute (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Moya
+    - Result
+  https://github.com/jsonsnow/CLSpces.git:
+    - Mediator
+    - WGNet
+    - WGRouter
+
+EXTERNAL SOURCES:
+  DynamicRoute:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  DynamicRoute: 0433449a38cd68f46e6b29e7662656c369ffda80
+  Mediator: 9ebd3fcac2e874aeef9fb829e440acec0e7eca7b
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  WGNet: 0fa4a7a9c7d0d6c6ab552130d38c60519bc43987
+  WGRouter: 12df174f180cff141c947c00cfd563c069fec2a0
+
+PODFILE CHECKSUM: 7a3ec35863d0af78c4ffca02d53cf5fafef99670
+
+COCOAPODS: 1.9.1

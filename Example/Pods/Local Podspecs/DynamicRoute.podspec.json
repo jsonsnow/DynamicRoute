@@ -1,0 +1,38 @@
+{
+  "name": "DynamicRoute",
+  "version": "0.1.0",
+  "summary": "A short description of DynamicRoute.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jsonsnow/DynamicRoute",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jsonsnow": "1183010734@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/jsonsnow/DynamicRoute.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "DynamicRoute/Classes/**/*",
+  "resource_bundles": {
+    "DynamicRoute": [
+      "DynamicRoute/Assets/*.plist"
+    ]
+  },
+  "dependencies": {
+    "WGRouter": [
+
+    ],
+    "WGNet": [
+
+    ],
+    "Mediator": [
+
+    ]
+  }
+}
