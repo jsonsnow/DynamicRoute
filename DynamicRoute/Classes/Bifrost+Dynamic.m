@@ -36,7 +36,9 @@ static NSString *kflutterRoute = @"flutter";
     NSDictionary *configs = [DynamicModule sharedInstance].configs[urlStr];
     NSString *cur = configs[@"cur"];
     if ([self isWeb:cur]) {
-        return [self handleURL:kRouteWebPath complexParams:complexParams completion:completion];
+        NSString *webPath = configs[@"webPath"];
+        NSDictionary *parmas = @{kRouteWebUrlParams: webPath};
+        return [self handleURL:kRouteWebPath complexParams:parmas completion:completion];
     }
     if ([self isRn:cur]) {
         NSAssert(0, @"rn route not imp");

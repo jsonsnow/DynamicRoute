@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>//user/login</key>
-    <dict>
-        <key>flutterPath</key>
-        <string></string>
-        <key>rnPath</key>
-        <string></string>
-        <key>webPath</key>
-        <string>#login</string>
-        <key>cur</key>
-        <string>native</string>
-        <key>path</key>
-        <string>//user/login</string>
+	<dict>
+		<key>flutterPath</key>
+		<string></string>
+		<key>rnPath</key>
+		<string></string>
+		<key>webPath</key>
+		<string>https://www.baidu.com/</string>
+		<key>cur</key>
+		<string>native</string>
+		<key>path</key>
+		<string>//user/login</string>
 	</dict>
 </dict>
 </plist>
