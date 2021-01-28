@@ -32,21 +32,42 @@ static NSString *kflutterRoute = @"flutter";
     }
 }
 
++ (nullable NSDictionary*)parametersInURL:(nonnull NSString*)urlStr {
+    NSURL *URL = [NSURL URLWithString:urlStr];
+    NSMutableDictionary *params = nil;
+    NSString *query = URL.query;
+    if(query.length > 0) {
+        params = [NSMutableDictionary dictionary];
+        NSArray *list = [query componentsSeparatedByString:@"&"];
+        for (NSString *param in list) {
+            NSArray *elts = [param componentsSeparatedByString:@"="];
+            if([elts count] < 2) continue;
+            NSString *decodedStr = [[elts lastObject] stringByRemovingPercentEncoding];
+            [params setObject:decodedStr forKey:[elts firstObject]];
+        }
+    }
+    return params;
+}
+
 + (id)dynamic_handleURL:(NSString *)urlStr complexParams:(NSDictionary *)complexParams completion:(BifrostRouteCompletion)completion {
     NSDictionary *configs = [DynamicModule sharedInstance].configs[urlStr];
     NSString *cur = configs[@"cur"];
+    if ([self isNativ:cur]) {
+        //这里可以拿config里面的path，来完成原生模块路由的配置切换
+        return [self dynamic_handleURL:urlStr complexParams:complexParams completion:completion];
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:complexParams];
+    [params addEntriesFromDictionary:[self parametersInURL:urlStr]];
     if ([self isWeb:cur]) {
         NSString *webPath = configs[@"webPath"];
-        NSDictionary *parmas = @{kRouteWebUrlParams: webPath};
-        return [self handleURL:kRouteWebPath complexParams:parmas completion:completion];
-    }
-    if ([self isRn:cur]) {
+        params[kRouteWebUrlParams] = webPath;
+        return [self dynamic_handleURL:kRouteWebPath complexParams:params completion:completion];
+    } else if ([self isRn:cur]) {
         NSAssert(0, @"rn route not imp");
-    }
-    if ([self isFlutter:cur]) {
+    } else {
         NSAssert(0, @"flutter route not imp");
     }
-    return [self dynamic_handleURL:urlStr complexParams:complexParams completion:completion];
+    return nil;
 }
 
 + (BOOL)isWeb:(NSString *)type {
@@ -57,7 +78,7 @@ static NSString *kflutterRoute = @"flutter";
 }
 
 + (BOOL)isNativ:(NSString *)type {
-    if ([type isEqualToString:knativeRoute]) {
+    if ([type isEqualToString:knativeRoute] || type.length == 0) {
         return YES;
     }
     return NO;
